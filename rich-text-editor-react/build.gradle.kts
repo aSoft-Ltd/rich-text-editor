@@ -4,6 +4,7 @@ plugins {
     id("io.codearte.nexus-staging")
     signing
 }
+
 kotlin{
     js(IR) {
         browser()
@@ -18,3 +19,8 @@ kotlin{
         }
     }
 }
+
+aSoftLibrary(
+    version = vers.asoft.rich_text_editor,
+    description = "A multiplatfrom library for rich text editing with kotlin/react"
+)

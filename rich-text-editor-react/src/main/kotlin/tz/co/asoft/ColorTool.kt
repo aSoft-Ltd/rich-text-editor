@@ -15,7 +15,8 @@ import styled.styledInput
 import tz.co.asoft.ColorTool.Props
 import tz.co.asoft.ColorTool.State
 
-private class ColorTool(p: Props) : RComponent<Props, State>(p) {
+@JsExport
+class ColorTool(p: Props) : RComponent<Props, State>(p) {
 
     private val inputId = UIID.getId("color-picker")
 
@@ -66,7 +67,7 @@ private class ColorTool(p: Props) : RComponent<Props, State>(p) {
                     height = 0.3.em
                     width = 70.pct
                     backgroundColor = Color(state.color)
-                    val c = if (Color(state.color).isEqualTo(theme.color.surface.color)) {
+                    val c = if (Color(state.color).isEqualTo(theme.surfaceColor)) {
                         theme.onSurfaceColor.value
                     } else {
                         state.color

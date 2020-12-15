@@ -19,3 +19,4 @@ rootProject.name = "rich-text-editor"
 
 include(":rich-text-editor-core")
 include(":rich-text-editor-react")
+include(":samples:react-samples")

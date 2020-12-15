@@ -1,7 +1,5 @@
 package tz.co.asoft
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.css.*
 import kotlinx.css.properties.border
@@ -18,7 +16,8 @@ import tz.co.asoft.RichTextEditor.Props
 import tz.co.asoft.RichTextEditor.State
 import kotlin.math.max
 
-private class RichTextEditor(p: Props) : RComponent<Props, State>(p), CoroutineScope by CoroutineScope(SupervisorJob()) {
+@JsExport
+class RichTextEditor(p: Props) : Component<Props, State>(p) {
     private val frameId = UIID.getId("rich-text-editor")
 
     class Props(
@@ -165,5 +164,5 @@ fun RBuilder.PostEditor(
 
 fun RBuilder.WordEditor(
     content: String? = null,
-    onSave: ((String) -> Unit)
+    onSave: (String) -> Unit
 ) = child(RichTextEditor::class.js, Props(content, RichTextEditorType.Word(onSave)) { WordEditorToolbar(it) }) {}
