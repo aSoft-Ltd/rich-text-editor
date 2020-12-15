@@ -1,6 +1,8 @@
 package tz.co.asoft
 
 import kotlinx.css.*
+import kotlinx.css.properties.s
+import kotlinx.css.properties.transition
 import kotlinx.html.js.onClickFunction
 import org.w3c.dom.events.Event
 import react.RBuilder
@@ -8,11 +10,27 @@ import react.RClass
 import styled.css
 import styled.styledDiv
 
-internal fun RBuilder.BCharIcon(char: Char, name: String, size: LinearDimension = 2.em, onClick: (Event) -> Unit) = Grid(rows = "1fr auto", gap = "0") {
+private fun CSSBuilder.feedbackStyles(theme: ReactTheme) {
+    transition(duration = 0.2.s)
+    hover {
+        backgroundColor = theme.onSurfaceColor.withAlpha(0.1)
+    }
+    active {
+        backgroundColor = theme.onSurfaceColor.withAlpha(0.2)
+    }
+}
+
+internal fun RBuilder.BCharIcon(
+    char: Char,
+    name: String,
+    size: LinearDimension = 2.em,
+    onClick: (Event) -> Unit
+) = Grid(rows = "1fr auto", gap = "0") {
     css {
         cursor = Cursor.pointer
         userSelect = UserSelect.none
         padding(vertical = 0.5.em)
+        feedbackStyles(it)
     }
     attrs.onClickFunction = onClick
     styledDiv {
@@ -32,10 +50,12 @@ internal fun RBuilder.BCharIcon(char: Char, name: String, size: LinearDimension 
     }
 }
 
-internal fun RBuilder.BIcon(icon: RClass<*>, name: String, onClick: (Event) -> Unit) = Grid(rows = "auto auto", gap = "0") {
+internal fun RBuilder.BIcon(icon: RClass<*>, name: String, onClick: (Event) -> Unit) = Grid(rows = "auto auto", gap = "0") { theme ->
     css {
         cursor = Cursor.pointer
         userSelect = UserSelect.none
+        paddingTop = 0.5.em
+        feedbackStyles(theme)
     }
     attrs.onClickFunction = onClick
     styledDiv {
@@ -67,6 +87,7 @@ internal fun RBuilder.SIcon(
         userSelect = UserSelect.none
         gridTemplateColumns = GridTemplateColumns(if (name == null) "1fr" else "auto 1fr")
         css?.let { it() }
+        feedbackStyles(it)
     }
 
     styledDiv { icon {} }

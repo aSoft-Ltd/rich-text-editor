@@ -1,13 +1,15 @@
 package tz.co.asoft
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import react.*
+import react.RBuilder
+import react.RProps
+import react.RState
+import react.setState
 import tz.co.asoft.FontSelector.Props
 import tz.co.asoft.FontSelector.State
 
-private class FontSelector : RComponent<Props, State>(), CoroutineScope by CoroutineScope(SupervisorJob()) {
+@JsExport
+class FontSelector : Component<Props, State>(){
     class Props(val onFontSelected: (String) -> Unit) : RProps
     class State(var selectedFont: String?, var availableFonts: List<String>) : RState
 

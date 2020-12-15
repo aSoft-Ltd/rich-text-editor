@@ -37,8 +37,8 @@ private fun RBuilder.AlignmentSection(controller: ITextEditorController) = Grid(
     css { minHeight = 5.em }
     Grid("1fr 1fr 1fr 1fr", gap = "0.5em") {
         css { children { alignSelf = Align.center } }
-        SIcon(FaSuperscript, "Super") { controller.unorderedList() }
-        SIcon(FaSubscript, "Sub") { controller.orderedList() }
+        SIcon(FaSuperscript, "Super") { controller.superscript() }
+        SIcon(FaSubscript, "Sub") { controller.subscript() }
         SIcon(FaIndent, "Indent") { controller.indent() }
         SIcon(FaOutdent, "Outdent") { controller.outdent() }
     }
@@ -118,6 +118,7 @@ private fun RBuilder.StylesSectionToolbar(controller: ITextEditorController) = G
 fun RBuilder.WordEditorToolbar(controller: ITextEditorController) = Grid {
     css {
         position = Position.sticky
+        backgroundColor = it.backgroundColor
         top = 0.px
         left = 0.px
     }
