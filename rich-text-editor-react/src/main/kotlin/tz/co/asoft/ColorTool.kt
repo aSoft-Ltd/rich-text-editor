@@ -2,6 +2,9 @@ package tz.co.asoft
 
 import kotlinx.css.*
 import kotlinx.css.Color
+import kotlinx.extensions.UIID
+import kotlinx.extensions.justifySelf
+import kotlinx.extensions.to
 import kotlinx.html.InputType
 import kotlinx.html.id
 import kotlinx.html.js.onChangeFunction
@@ -9,9 +12,13 @@ import kotlinx.html.js.onClickFunction
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLInputElement
 import react.*
+import reakt.Grid
 import styled.css
 import styled.styledDiv
 import styled.styledInput
+import theme.ThemeConsumer
+import theme.onSurfaceColor
+import theme.surfaceColor
 import tz.co.asoft.ColorTool.Props
 import tz.co.asoft.ColorTool.State
 
@@ -81,9 +88,9 @@ class ColorTool(p: Props) : RComponent<Props, State>(p) {
                     }
                     attrs.id = inputId.value
                     attrs.onChangeFunction = {
-                        it.target?.to<HTMLInputElement>().value.let {
-                            setState { color = it }
-                            props.onColorChanged(it)
+                        it.target?.to<HTMLInputElement>()?.value?.let { c ->
+                            setState { color = c }
+                            props.onColorChanged(c)
                         }
                     }
                 }

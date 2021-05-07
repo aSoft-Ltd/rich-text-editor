@@ -5,22 +5,22 @@ plugins {
     signing
 }
 
-kotlin{
+kotlin {
     js(IR) {
-        browser()
+        browserLib()
     }
     sourceSets {
         val main by getting {
             dependencies {
                 api(project(":rich-text-editor-core"))
-                api(asoft("reakt-layouts",vers.asoft.reakt))
-                api(asoft("reakt-inputs",vers.asoft.reakt))
+                api(asoft("reakt-layouts", vers.asoft.reakt))
+                api(asoft("reakt-inputs", vers.asoft.reakt))
             }
         }
     }
 }
 
-aSoftLibrary(
+aSoftOSSLibrary(
     version = vers.asoft.rich_text_editor,
     description = "A multiplatfrom library for rich text editing with kotlin/react"
 )

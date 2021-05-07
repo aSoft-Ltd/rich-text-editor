@@ -1,5 +1,6 @@
 package tz.co.asoft
 
+import kotlinx.extensions.UIID
 import org.w3c.dom.HTMLIFrameElement
 
 class TextEditorController(private val frameId: UIID) : ITextEditorController {

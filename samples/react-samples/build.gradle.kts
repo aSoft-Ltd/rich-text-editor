@@ -13,10 +13,7 @@ applikation {
 
 kotlin {
     js(IR) {
-        browser {
-            commonWebpackConfig { cssSupport.enabled = true }
-        }
-        binaries.executable()
+        browserApp()
     }
     sourceSets {
         val main by getting {

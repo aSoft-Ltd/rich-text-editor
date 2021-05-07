@@ -3,12 +3,16 @@ package tz.co.asoft
 import kotlinx.css.*
 import kotlinx.css.properties.s
 import kotlinx.css.properties.transition
+import kotlinx.extensions.justifySelf
 import kotlinx.html.js.onClickFunction
 import org.w3c.dom.events.Event
 import react.RBuilder
 import react.RClass
+import reakt.Grid
 import styled.css
 import styled.styledDiv
+import theme.ReactTheme
+import theme.onSurfaceColor
 
 private fun CSSBuilder.feedbackStyles(theme: ReactTheme) {
     transition(duration = 0.2.s)

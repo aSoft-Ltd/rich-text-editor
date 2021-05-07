@@ -1,5 +1,4 @@
 plugins {
-    id("com.android.library")
     kotlin("multiplatform")
     id("tz.co.asoft.library")
     id("io.codearte.nexus-staging")
@@ -7,17 +6,23 @@ plugins {
 }
 
 kotlin {
-    universalLib()
+    js(IR) { library() }
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(asoft("kotlinx-extensions", vers.asoft.kotlinx_extensions))
+                api(asoft("kotlinx-extensions-core", vers.asoft.kotlinx_extensions))
+            }
+        }
+
+        val jsMain by getting {
+            dependencies {
+                api(asoft("kotlinx-extensions-browser", vers.asoft.kotlinx_extensions))
             }
         }
     }
 }
 
-aSoftLibrary(
+aSoftOSSLibrary(
     version = vers.asoft.rich_text_editor,
     description = "A multiplatfrom library for rich text editing"
 )

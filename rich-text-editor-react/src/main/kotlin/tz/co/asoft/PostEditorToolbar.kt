@@ -1,7 +1,9 @@
 package tz.co.asoft
 
 import kotlinx.css.JustifyContent
+import kotlinx.extensions.justifySelf
 import react.RBuilder
+import reakt.*
 
 fun RBuilder.PostEditorToolbar(controller: ITextEditorController) = Grid("auto ".repeat(4) + "1fr") {
     SIcon(FaBold) { controller.bold() }

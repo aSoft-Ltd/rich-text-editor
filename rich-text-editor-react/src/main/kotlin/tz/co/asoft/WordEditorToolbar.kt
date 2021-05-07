@@ -1,8 +1,11 @@
 package tz.co.asoft
 
 import kotlinx.css.*
+import kotlinx.extensions.*
 import react.RBuilder
+import reakt.*
 import styled.css
+import theme.backgroundColor
 
 private fun RBuilder.WordingToolbarSection(controller: ITextEditorController) = Grid(rows = "1fr 1fr", gap = "0.5em") { theme ->
     css { minHeight = 5.em }
